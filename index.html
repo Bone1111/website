@@ -182,6 +182,64 @@
             justify-content: center;
         }
 
+        /* SERVER STATUS WIDGET */
+        .fivem-status-widget {
+            background-color: rgba(24, 24, 31, 0.6); /* Semi-transparent dark bg */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            width: 100%;
+            max-width: 300px;
+            margin: 40px auto 0 auto;
+            text-align: left;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+        }
+
+        .fivem-status-widget:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+        }
+
+        .fivem-status-widget .widget-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .fivem-status-widget .widget-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .fivem-status-widget .status-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .fivem-status-widget .status-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .fivem-status-widget .status-label {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .fivem-status-widget .status-value {
+            font-weight: 600;
+        }
+
         /* SECTION STANDARDS */
         section {
             padding: 100px 5%;
@@ -514,6 +572,24 @@
                 <!-- UPDATED DISCORD LINK HERE -->
                 <a href="https://discord.gg/8W58uXE8" target="_blank" class="btn btn-secondary"><i class="fa-brands fa-discord"></i> Join Discord</a>
             </div>
+            
+            <!-- ADDED: SERVER STATUS WIDGET -->
+            <div class="fivem-status-widget fade-in">
+                <div class="widget-header">
+                    <span class="widget-title"><i class="fa-solid fa-server"></i> Server Status</span>
+                </div>
+                <div class="widget-body">
+                    <div class="status-row">
+                        <span class="status-label">Status:</span>
+                        <span class="status-value" id="fm-status">🟡 Checking...</span>
+                    </div>
+                    <div class="status-row">
+                        <span class="status-label">Players:</span>
+                        <span class="status-value" id="fm-players">--/--</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -684,15 +760,13 @@
 
     <!-- JAVASCRIPT -->
     <script>
-        // 1. Email Form Redirection Logic (CRITICAL FUNCTIONALITY)
+        // 1. Email Form Redirection Logic
         document.getElementById('whitelistForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent standard form submission
-            
-            // Redirect user directly to the Whitelist Application Link
+            e.preventDefault(); 
             window.location.href = "https://guildbase.gg/apply/prestige-roleplay/whitelist-application-WI1NAK";
         });
 
-        // 2. Scroll Animation Logic (Fade in elements as they scroll into view)
+        // 2. Scroll Animation Logic
         const observerOptions = {
             root: null,
             rootMargin: '0px',
@@ -703,7 +777,7 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('appear');
-                    observer.unobserve(entry.target); // Stop observing once appeared
+                    observer.unobserve(entry.target); 
                 }
             });
         }, observerOptions);
@@ -711,6 +785,40 @@
         document.querySelectorAll('.fade-in').forEach(element => {
             observer.observe(element);
         });
+
+        // 3. FiveM Server Status Logic
+        function updateFiveMStatus() {
+            const statusEl = document.getElementById('fm-status');
+            const playersEl = document.getElementById('fm-players');
+            const serverUrl = 'http://217.20.242.220:20040/dynamic.json';
+
+            fetch(serverUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Server unreachable');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    statusEl.innerHTML = '🟢 Online';
+                    statusEl.style.color = '#4ade80'; // Light Green
+                    
+                    const clients = data.clients || 0;
+                    const maxClients = data.sv_maxclients || 0;
+                    playersEl.textContent = `${clients} / ${maxClients}`;
+                })
+                .catch(error => {
+                    statusEl.innerHTML = '🔴 Offline';
+                    statusEl.style.color = '#ef4444'; // Red
+                    playersEl.textContent = '--/--';
+                });
+        }
+
+        // Run immediately on load
+        updateFiveMStatus();
+
+        // Auto refresh every 10 seconds
+        setInterval(updateFiveMStatus, 10000);
     </script>
 </body>
 </html>
