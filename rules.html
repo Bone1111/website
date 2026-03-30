@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rules | Prestige Roleplay</title>
+    <meta name="description" content="Official community rule book for Prestige Roleplay.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* CSS VARIABLES - Premium Theme */
+        :root {
+            --bg-main: #09090b;
+            --bg-secondary: #121217;
+            --bg-card: #18181f;
+            --primary: #d4af37; /* Prestige Gold */
+            --primary-hover: #b5952f;
+            --accent: #7b2cbf; /* Deep Purple */
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --danger: #ef4444; /* Red for punishments */
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* BASE STYLES */
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-main); color: var(--text-light); line-height: 1.6; overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* BUTTONS */
+        .btn { display: inline-block; padding: 14px 28px; font-size: 1rem; font-weight: 600; font-family: 'Montserrat', sans-serif; border-radius: 4px; cursor: pointer; transition: var(--transition); text-transform: uppercase; letter-spacing: 1px; border: none; }
+        .btn-primary { background-color: var(--primary); color: #000; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); }
+        .btn-primary:hover { background-color: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5); }
+
+        /* NAVBAR */
+        header { position: fixed; top: 0; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(9, 9, 11, 0.85); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .logo { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--text-light); letter-spacing: 2px; display: flex; align-items: center; gap: 10px; }
+        .logo i { color: var(--primary); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { font-size: 0.9rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* PAGE HEADER */
+        .page-header { background: linear-gradient(to bottom, rgba(9, 9, 11, 0.8), var(--bg-main)), url('https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat; padding: 150px 5% 60px 5%; text-align: center; border-bottom: 2px solid var(--accent); }
+        .page-header h1 { font-size: 3rem; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+        .page-header p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+        /* RULES LAYOUT */
+        .rules-wrapper { display: flex; gap: 40px; max-width: 1400px; margin: 0 auto; padding: 60px 5%; align-items: flex-start; }
+        
+        /* SIDEBAR NAV */
+        .sidebar { flex: 0 0 300px; position: sticky; top: 100px; background: var(--bg-secondary); padding: 30px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.05); }
+        .sidebar h3 { margin-bottom: 20px; font-size: 1.2rem; color: var(--text-light); border-bottom: 2px solid var(--accent); padding-bottom: 10px; }
+        .sidebar ul { display: flex; flex-direction: column; gap: 15px; }
+        .sidebar a { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; transition: var(--transition); display: block; }
+        .sidebar a:hover, .sidebar a.active { color: var(--primary); transform: translateX(5px); }
+
+        /* MAIN CONTENT */
+        .content { flex: 1; }
+        .section-title { font-size: 2rem; color: var(--text-light); margin: 60px 0 30px 0; padding-bottom: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .section-title:first-child { margin-top: 0; }
+        
+        /* GENERAL INFO BLOCK */
+        .general-info { background: var(--bg-secondary); padding: 30px; border-radius: 8px; margin-bottom: 40px; border-left: 4px solid var(--primary); }
+        .general-info p { margin-bottom: 15px; color: var(--text-muted); }
+        .general-info p:last-child { margin-bottom: 0; }
+
+        /* RULE BLOCK */
+        .rule-block { background: var(--bg-card); padding: 25px 30px; border-radius: 8px; margin-bottom: 20px; border: 1px solid rgba(255, 255, 255, 0.05); transition: var(--transition); }
+        .rule-block:hover { border-color: rgba(212, 175, 55, 0.3); box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
+        .rule-block h4 { font-size: 1.25rem; color: var(--primary); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .rule-block p { color: var(--text-muted); margin-bottom: 15px; }
+        
+        .examples { margin: 15px 0; padding-left: 20px; border-left: 2px solid rgba(255,255,255,0.1); }
+        .examples li { color: var(--text-muted); margin-bottom: 8px; position: relative; padding-left: 15px; }
+        .examples li::before { content: "•"; color: var(--accent); font-weight: bold; position: absolute; left: 0; }
+        
+        .punishment { margin-top: 20px; padding-top: 15px; border-top: 1px dashed rgba(255,255,255,0.1); color: var(--danger); font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; }
+
+        /* FOOTER */
+        footer { background-color: var(--bg-secondary); padding: 60px 5% 20px 5%; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; margin-bottom: 40px; }
+        .footer-col h4 { color: var(--text-light); margin-bottom: 20px; font-size: 1.2rem; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: var(--text-muted); transition: var(--transition); }
+        .footer-col ul li a:hover { color: var(--primary); }
+        .footer-bottom { text-align: center; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 20px; }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .rules-wrapper { flex-direction: column; }
+            .sidebar { position: static; width: 100%; flex: auto; margin-bottom: 20px; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .page-header h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-crown"></i> PRESTIGE RP
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#features">Features</a>
+            <a href="rules.html" style="color: var(--primary);">Rules</a>
+        </nav>
+        <a href="https://guildbase.gg/apply/prestige-roleplay/whitelist-application-WI1NAK" target="_blank" class="btn btn-primary">Apply Now</a>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <h1>Community Rule Book</h1>
+        <p>Ignorance of the rules is not an excuse. Read carefully before entering the city.</p>
+    </section>
+
+    <!-- RULES CONTENT -->
+    <div class="rules-wrapper">
+        
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <h3>Table of Contents</h3>
+            <ul>
+                <li><a href="#general">General Information</a></li>
+                <li><a href="#section-1">Section 1: Discord Rules</a></li>
+                <li><a href="#section-2">Section 2: Common Offences</a></li>
+                <li><a href="#section-3">Section 3: Community Offences</a></li>
+                <li><a href="#section-4">Section 4: Additional Info</a></li>
+            </ul>
+        </aside>
+
+        <!-- MAIN TEXT -->
+        <main class="content">
+
+            <!-- GENERAL INFO -->
+            <h2 id="general" class="section-title">General Information</h2>
+            <div class="general-info">
+                <p>All staff authority is an extension of that held by the Director of Administration.</p>
+                <p>‘Staff Supervisors’ or the ‘Senior Staff Team’ refers to Senior Administrators and Head Administrators. Moderators, Senior Moderators, Head Moderators, and Administrators do not have authority over one another. Only the senior staff team has the authority to issue directives to staff members.</p>
+                <p>Staff members are subject to the same scrutiny regarding the rules as any other member. The initial staff member involved in a staff situation has the final say in-game regarding punishment unless a member of the senior staff team is present.</p>
+                <p>A person that feels a staff member has not adhered to this rule book should open a staff report ticket. However, this does not guarantee a revocation of the punishment issued.</p>
+                <p>All unbans must be processed through the ban appeal located in the discord.</p>
+                <p><strong>We do not tolerate failing to know the rules as an excuse for breaking them.</strong> All members within the discord will have access to this document and subsequently, it will become their responsibility to understand and follow the rules posted.</p>
+                <p>Do not request staff until a scene has been concluded.</p>
+                <p style="color: var(--danger); font-weight: bold; margin-top: 20px;">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Punishment lengths are detailed in red. The punishment increases to each offence level (indicated 1st, 2nd, 3rd) if the same rule is violated within a 7-day window after the previous punishment expires. Punishment lengths may vary if multiple violations occur. Any punishment over 1 week in length comes with a de-whitelist.
+                </p>
+            </div>
+
+            <!-- SECTION 1 -->
+            <h2 id="section-1" class="section-title">Section 1: Discord Rules</h2>
+            
+            <div class="rule-block">
+                <h4>1.1 Advertisement</h4>
+                <p>It is not permitted to advertise content unrelated to the server. Regardless of the content, it is strictly forbidden to conduct promotion through direct messages.</p>
+            </div>
+            <div class="rule-block">
+                <h4>1.2 Internal Business</h4>
+                <p>You must not directly message people when pertaining to server processes eg: content within a ticket, the status of a ban appeal, the status of an application, promotion candidates, ect. With this in mind, it is forbidden to share information within a private channel to a member who cannot view said channel.</p>
+            </div>
+            <div class="rule-block">
+                <h4>1.3 Pinging</h4>
+                <p>Do not ping management and above. If you require a staff supervisor or assistance generally then open a ticket. Once in a ticket, await responses patiently.</p>
+            </div>
+            <div class="rule-block">
+                <h4>1.4 General Communications</h4>
+                <p>Please remain polite and courteous at all times. Avoid public disputes, excessive cursing, and keep the roleplay to the in-game city. Everyone is here for a civil time.</p>
+            </div>
+            <div class="rule-block">
+                <h4>1.5 Appropriate Microphone Usage</h4>
+                <p>If you enjoy staying unmuted, ensure that you are not mic spamming, being excessively loud, or using a voice changer.</p>
+            </div>
+
+            <!-- SECTION 2 -->
+            <h2 id="section-2" class="section-title">Section 2: Common Offences</h2>
+
+            <div class="rule-block">
+                <h4>2.1 Random Death Match (RDM)</h4>
+                <p>This is considered the means of killing someone without reason or roleplay.</p>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: 2 hour ban | 2nd: 1 day ban | 3rd: 1 week ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.2 Vehicular Death Match (VDM)</h4>
+                <p>This is the means of killing or injuring someone using a vehicle without a very good reason or roleplay. VDM is essentially RDM but with a car, plane, bike, or other methods of transport. Excessively ramming someone with your vehicle also can count as VDM.</p>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: 2 hour ban | 2nd: 1 day ban | 3rd: 1 week ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.3 Fail Roleplay (FRP)</h4>
+                <p>When a person takes actions that are considered unrealistic. This incorporates a large number of offences but primarily is focused on utilising the GTA features as accurately as possible.</p>
+                <p><strong>Some examples given:</strong></p>
+                <ul class="examples">
+                    <li>Spawning a car in front of a group of people</li>
+                    <li>Changing clothing in front of a group of people without the means to do so</li>
+                    <li>Talking as a dog</li>
+                    <li>Killing someone because they called you a name</li>
+                    <li>Landing a plane on a road randomly</li>
+                    <li>Respawning your vehicle</li>
+                    <li>Talking clearly after being shot multiple times</li>
+                </ul>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: 2 hour ban | 2nd: 1 day ban | 3rd: 1 week ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.4 Leaving to Avoid Punishment (LTAP)</h4>
+                <p>If you leave the game or staff situation without dismissal from staff on scene then you will be in violation of this rule. If you crash please open a ticket and inform staff of the issue you encountered.</p>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: 2 day ban | 2nd: 1 week ban | 3rd: 1 month ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.5 Sexual Roleplay</h4>
+                <p>We will be lenient with sexual innuendo. However, sexual acts and inappropriate characters will not be tolerated. We would also like to steer clear of sexual assaults for obvious reasons.</p>
+                <ul class="examples">
+                    <li>Prostitute Roleplay</li>
+                    <li>Sexual Assault back-stories or 911 calls.</li>
+                    <li>Use of naked characters.</li>
+                </ul>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: Warning | 2nd: 1 day ban | 3rd: 1 week ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.6 Green Zone Violations</h4>
+                <p>Green zones are reserved for RP preparation like respawning. You must not interfere with green zones or you will face punishment. Hospitals are the only green zone in the server but roleplay is expected.</p>
+                <ul class="examples">
+                    <li>Shooting into or out of a green zone</li>
+                    <li>Kidnapping someone in a greenzone</li>
+                    <li>Screaming FRP at someone in a green zone because they aren’t roleplaying with you</li>
+                </ul>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: 2 hour ban | 2nd: 1 day ban | 3rd: 1 week ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.7 Suicide Roleplay</h4>
+                <p>Suicide Roleplay is not allowed due to the unsettling nature of it and must not be in the server. Members who fail to follow this will face bans for lengthy periods.</p>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: Warning | 2nd: 1 week ban | 3rd: 3 month ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.8 GTA Driving</h4>
+                <p>This is essentially a branch of FRP as it consists of using your vehicle in an unrealistic way. Vehicles designed for off-road use will be allowed to travel over dirt and grass but must not be used when scaling a mountain - bikes particularly.</p>
+                <ul class="examples">
+                    <li>Driving up a mountain</li>
+                    <li>Driving off a mountain</li>
+                    <li>Making very unrealistic jumps off ramps</li>
+                </ul>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: Warning | 2nd: 1 day ban | 3rd: 1 week ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.9 Trolling</h4>
+                <p>We will be lenient with mild trolling. Mild trolling among friends or with people who can take a joke is allowed. However, inappropriate or excessive trolling - especially towards those who clearly aren’t okay with it - won’t be tolerated. If someone’s acting like a snowflake, maybe think twice before pushing it.</p>
+                <ul class="examples">
+                    <li>Repeated trolling after being told to stop</li>
+                    <li>Harassing random players who aren’t engaging with you</li>
+                    <li>Targeting someone who clearly isn’t okay with the joke</li>
+                </ul>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: 1 day ban | 2nd: 3 month ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.10 Valuing your life</h4>
+                <p>This is considered the act of failing to consider the consequences of your actions when faced with potential injury or death.</p>
+                <ul class="examples">
+                    <li>Not listening to a hostage taker</li>
+                    <li>Drawing a weapon when someone already has one drawn on you</li>
+                    <li>Choosing to die rather than surrender peacefully</li>
+                </ul>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: Warning | 2nd: 1 day ban | 3rd: 1 week ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.11 Cop Baiting</h4>
+                <p>This is when a member blatantly breaks the law in front of law enforcement officers and proceeds to do so again after they do not initiate a scene.</p>
+                <ul class="examples">
+                    <li>Shooting at LEO randomly</li>
+                    <li>Speeding up when you spot a cop</li>
+                    <li>Telling cops you just robbed a bank to their face and then running off</li>
+                </ul>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: Warning | 2nd: 6 hour ban | 3rd: 1 week ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.12 Terrorism Roleplay</h4>
+                <p>This is the act of mass killing without a reason as it is essentially RDM. This is alongside a ban on explosives as you may not threaten people with “I have a bomb” and similar principles. This does not apply to an in-depth scene like roleplaying that you blew through a vault.</p>
+                <ul class="examples">
+                    <li>Stabbing people because of a political topic</li>
+                    <li>Hijacking a plane</li>
+                    <li>Preparing a large-scale attack</li>
+                </ul>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: 2 hour ban | 2nd: 3 month ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.13 Hitman Roleplay</h4>
+                <p>You are allowed to do hitman roleplay but there must be a valid reason and roleplay behind it. You also may not scam the person once they have killed or kidnapped the person for you. This NEEDS to be approved by management.</p>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: Warning | 2nd: 3 day ban | 3rd: 3 month ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.14 Theft of Government Vehicles</h4>
+                <p>You may steal LEO vehicles if you are in an active scenario with them. You may not steal SAFR Vehicles regardless of the situation. This still counts for LEO trying to do this off-duty as well.</p>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: Warning | 2nd: 1 day ban | 3rd: 1 week ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.15 Hacking, Cheating, or Modding</h4>
+                <p>Please do not do any of these things here. We appreciate that it can be funny and putting people in Christmas trees was enjoyable once but people are here to RP and these actions disrupt it. If you are removed from the city for hacking, cheating, or modding then you will have no hope of getting back in. Using an external crosshair violates this rule but results in a lesser punishment.</p>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> Cheating: 6 month ban | Crosshair: Non-negotiable 2 hour ban (1st), 1 week ban (2nd), 3 month ban (3rd)</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.16 Script Abuse and Exploiting</h4>
+                <p>This is the method of taking actions that are considered unfair or give one party an advantage through means that should not be in-game. In theory, there will not be any chances for this but as the server is constantly changing there may be things that are not supposed to be where they are. If you encounter a server-related issue then please open a support ticket and notify us.</p>
+                <ul class="examples">
+                    <li>Using boombox while cuffed</li>
+                    <li>Using radio or phone while cuffed or flatbacked</li>
+                    <li>Tackling while in cuffs</li>
+                </ul>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: 2 hour ban | 2nd: 1 week ban | 3rd: 1 month ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.17 Metagaming</h4>
+                <p>This is the usage of information, which is outside of RP, for the advantage of one party. You can still talk with your friends as long as it’s not moment-specific information.</p>
+                <ul class="examples">
+                    <li>Telling your friend where you died</li>
+                    <li>Watching SG’s stream and using that information</li>
+                    <li>Using information of a different character</li>
+                </ul>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: Warning | 2nd: 1 day ban | 3rd: 1 week ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.18 Kidnapping Emergency Services</h4>
+                <p>While this may come as a disappointment to some, we have added this rule in as communicating with a kidnapped Emergency Services is often poorly executed. You cannot take or move a downed officer unless transporting them directly to medical treatment or a friendly ES unit. You cannot ocean dump a police officer.</p>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: 2 hour ban | 2nd: 1 day ban | 3rd: 1 week ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.19 White-listed Organisations / Impersonation</h4>
+                <p>Impersonating a whitelisted position is not allowed. These include any position that is not accessible without application, interview, or training of some kind.</p>
+                <p>Whitelisted organisation members have full ownership over their org property and may request for people to be removed after warnings. You may not randomly create an organisation. If you wish to start one, please create a support ticket and communicate with us. You may create a ticket to organise a potential impersonation.</p>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: Warning | 2nd: 1 day ban | 3rd: 1 week ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.20 Default Ped</h4>
+                <p>You must change peds from the default one before you exit a greenzone and start roleplaying. The default ped is the one you spawn into the server with. You must also change your facial structure from the default.</p>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: Warning | 2nd: 1 day ban | 3rd: 3 month ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.21 Revenge Roleplay & New Life Rule</h4>
+                <p>If you require transport to a hospital, you must forget everything that has recently happened. You may not come back with the same character or a new one to seek out the player that killed you. You may not return to the scene for 20 minutes. You must not respawn optionally while the scene is still active. Returning to retrieve your car or an item is not acceptable.</p>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: 2 hour ban | 2nd: 1 day ban | 3rd: 1 week ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.22 Robbery Roleplay & Force Roleplay</h4>
+                <p>You are required to “initiate” a valid scene before attempting to rob someone or kill someone. Gang vs Gang initiation is different as they can be on sight but you must declare your rivalry. Also doing illegal activities like selling drugs is automatic initiation and someone may rob you.</p>
+                <p>Their participation is equally required, they will need to have previously provided you with a reason for robbery eg: threatening, “beef”, or issues with close friends. Equally, they may be robbed if you are committing an armed robbery and they are at the location which is being robbed eg: a bank or a 24/7. There is a 30 minute cooldown between the robberies you can commit. Fake hostage is allowed.</p>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: 2 hour ban | 2nd: 3 day ban | 3rd: 1 month ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.23 Combat Logging</h4>
+                <p>Logging out to avoid consequences (arrest, injury, robbery, etc.) is a bannable offense. If your game crashes, attempt to reconnect immediately and inform those involved.</p>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: 2 day ban | 2nd: 1 week ban | 3rd: 3 month ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.24 Quality Roleplay</h4>
+                <p>These rules are to ensure the roleplay within the server is fair and balanced.</p>
+                <ul class="examples">
+                    <li>Major Crimes (heists, large-scale kidnappings, police ambushes, gang wars, shootings) are prohibited 30 minutes before and after restarts.</li>
+                    <li>4 man rule maximum per scenario for civs/gangs per scene unless you’re at your gang area.</li>
+                    <li>2 car max rule per scenario.</li>
+                    <li>Pocket wiping is not allowed. Taking legal, non-valuable items requires valid roleplay reasoning eg: preventing a person from calling the police after you rob them by taking their phone if they were not injured. Robbing for IDs is not acceptable.</li>
+                    <li>You cannot force someone to withdraw money from an ATM or bank under threat.</li>
+                    <li>Scamming within the server is not allowed.</li>
+                    <li>Tackling someone and shooting them while down is classed as power-gaming.</li>
+                </ul>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: 2 hour ban | 2nd: 1 day ban | 3rd: 1 week ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.25 Stealing ES Equipment</h4>
+                <p>Stealing ES Equipment is not allowed. The only exception is cuffs, bandages, armour. You must NOT steal PD-issued weapons! This rule is in place so people don’t decide to rob police 24/7 for their weapons.</p>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: 2 hour ban | 2nd: 3 day ban | 3rd: 1 month ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.26 Stealing Business Assets</h4>
+                <p>Stealing equipment or assets from businesses is strictly prohibited. You may not take or use any business property without permission. You may not take items out of the PD armory to sell or for personal use. This rule helps maintain fair roleplay and prevents constant raids or griefing of player-run businesses.</p>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: 3 day ban | 2nd: 3 month ban</div>
+            </div>
+
+            <div class="rule-block">
+                <h4>2.27 Hostage Taking</h4>
+                <p>Emergency Service members (Police, EMS) may not be taken hostage. Demanding money in exchange for a hostage’s release is strictly prohibited. You cannot rob a cooperative hostage except for their weapons. To take a hostage you should have a valid reasoning / interaction.</p>
+                <div class="punishment"><i class="fa-solid fa-gavel"></i> 1st: 2 hour ban | 2nd: 1 day ban | 3rd: 1 week ban</div>
+            </div>
+
+            <!-- SECTION 3 -->
+            <h2 id="section-3" class="section-title">Section 3: Community Related Offences</h2>
+            
+            <div class="rule-block">
+                <h4>3.1 Discrimination & Racism</h4>
+                <p>Personal Attacks based on race, gender, culture, sexuality, or defining characteristics will not be tolerated. This rule is so simple; if you have nothing nice to say then say nothing at all.</p>
+            </div>
+            <div class="rule-block">
+                <h4>3.2 Harassment</h4>
+                <p>We consider harassment as continuously receiving inappropriate comments or other kinds of attacks from one person or a group of people. Much like the previous rule, we have a limited-tolerance policy for this when it is clear and intentional. The community should be a safe space for all members and we expect that everyone will do their best to keep it that way.</p>
+            </div>
+            <div class="rule-block">
+                <h4>3.3 General Toxicity</h4>
+                <p>This is another rule added to maintain the welcoming atmosphere of our server. Excessive shouting, rudeness, cursing, or other forms of disrespect and toxicity will result in sanctions.</p>
+            </div>
+            <div class="rule-block">
+                <h4>3.4 Spamming</h4>
+                <p>This is when members either repeat themselves quickly 3+ times in a chat or type a sentence in multiple parts rather than a longer message. This applies to both discord chats and in-game chat.</p>
+            </div>
+            <div class="rule-block">
+                <h4>3.5 Internal Business</h4>
+                <p>All restricted information within Prestige Roleplay counts as internal business. Staff, LEO, and other organisations will not share any information with outside members without authorisation from our management team and above.</p>
+                <p>Directly messaging staff with regard to applications, incidents, punishments, or appeals will count as a violation of internal business. If you require assistance you should open a support ticket or ask general questions in #general-chat. In the event, you need to make a staff report, please open a support ticket and request the removal of ticket support.</p>
+                <p>Discussing punishments outside of tickets in places like general will also violate this rule and result in punishment.</p>
+            </div>
+            <div class="rule-block">
+                <h4>3.6 Mic Spamming & Voice Changers & No Mic</h4>
+                <p>If you enjoy staying unmuted, ensure that you are not mic spamming, being excessively loud, or using a voice changer. Alongside this, if you sound under-aged and multiple staff agree then you may be subject to removal in compliance with our minimum age.</p>
+            </div>
+            <div class="rule-block">
+                <h4>3.7 Discord TOS</h4>
+                <p>Please follow Discord TOS because we will not be giving back permissions, ranks, and roles if you lose your account. Also just comply with Discord TOS so we have no problems.</p>
+            </div>
+
+            <!-- SECTION 4 -->
+            <h2 id="section-4" class="section-title">Section 4: Additional Information</h2>
+
+            <div class="rule-block">
+                <h4>4.1 Staff Authority</h4>
+                <p>Staff have the final say in punishments and arguing with staff in-game or in Discord will result in further punishment. Staff members do not have to provide you with a higher-up if one is not currently available. However, you are advised to open a support ticket if you feel that you have been unfairly treated by a staff member.</p>
+            </div>
+            <div class="rule-block">
+                <h4>4.2 Ban Appeals</h4>
+                <p>When submitting a ban appeal ensure that you put time and effort into it and follow the instructions provided to you. Do not DM staff members with regards to appeals as you will receive a response when your case has been reviewed. Ban Appeals are checked by Senior Administrators and higher ranks. If evidence needs to be reviewed for your case then a minimum of two staff members will cast a verdict.</p>
+            </div>
+            <div class="rule-block">
+                <h4>4.3 Staff Rank Structure</h4>
+                <p>Staff in Training <i class="fa-solid fa-arrow-right" style="color:var(--primary); font-size: 0.8rem; margin: 0 5px;"></i> Moderator <i class="fa-solid fa-arrow-right" style="color:var(--primary); font-size: 0.8rem; margin: 0 5px;"></i> Senior Moderator <i class="fa-solid fa-arrow-right" style="color:var(--primary); font-size: 0.8rem; margin: 0 5px;"></i> Head Moderator <i class="fa-solid fa-arrow-right" style="color:var(--primary); font-size: 0.8rem; margin: 0 5px;"></i> Admin <i class="fa-solid fa-arrow-right" style="color:var(--primary); font-size: 0.8rem; margin: 0 5px;"></i> Senior Admin <i class="fa-solid fa-arrow-right" style="color:var(--primary); font-size: 0.8rem; margin: 0 5px;"></i> Head Admin <i class="fa-solid fa-arrow-right" style="color:var(--primary); font-size: 0.8rem; margin: 0 5px;"></i> Management Team <i class="fa-solid fa-arrow-right" style="color:var(--primary); font-size: 0.8rem; margin: 0 5px;"></i> Co-Owner <i class="fa-solid fa-arrow-right" style="color:var(--primary); font-size: 0.8rem; margin: 0 5px;"></i> Ownership Team</p>
+            </div>
+            <div class="rule-block">
+                <h4>4.4 Feedback</h4>
+                <p>We are constantly looking for server feedback on everything. Please help us out by voicing your questions, comments and concerns in a support ticket or in our community suggestion channel.</p>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="margin-bottom: 15px; font-size: 1.2rem;">
+                    <i class="fa-solid fa-crown"></i> PRESTIGE RP
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">The premier destination for 16+ serious roleplay in the UK and EU. Your story, your rules.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="rules.html">Server Rules</a></li>
+                    <li><a href="https://guildbase.gg/apply/prestige-roleplay/whitelist-application-WI1NAK" target="_blank">Whitelist Application</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="https://discord.gg/8W58uXE8" target="_blank">Discord Server</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Prestige Roleplay. All rights reserved. Not affiliated with Rockstar Games.
+        </div>
+    </footer>
+
+</body>
+</html>
