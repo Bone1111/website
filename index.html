@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestige Roleplay | Premium Serious FiveM RP</title>
+    <meta name="description" content="Experience the pinnacle of serious roleplay. Join Prestige Roleplay, a premium 16+ UK/EU FiveM community.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* CSS VARIABLES - Premium Theme */
+        :root {
+            --bg-main: #09090b;
+            --bg-secondary: #121217;
+            --bg-card: #18181f;
+            --primary: #d4af37; /* Prestige Gold */
+            --primary-hover: #b5952f;
+            --accent: #7b2cbf; /* Deep Purple */
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #000;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-light);
+            border: 2px solid #5865F2; /* Discord Color */
+            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background-color: #5865F2;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(88, 101, 242, 0.4);
+        }
+
+        /* NAVBAR */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(9, 9, 11, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-light);
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 5%;
+            position: relative;
+            background: linear-gradient(to bottom, rgba(9, 9, 11, 0.6), rgba(9, 9, 11, 1)), url('https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* SECTION STANDARDS */
+        section {
+            padding: 100px 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* TRUST / SOCIAL PROOF */
+        .trust-section {
+            background-color: var(--bg-secondary);
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .trust-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .trust-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(123, 44, 191, 0.1);
+        }
+
+        .trust-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .trust-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* FEATURES SECTION */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature {
+            background: var(--bg-secondary);
+            padding: 40px 30px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            transition: var(--transition);
+        }
+
+        .feature:hover {
+            background: var(--bg-card);
+            transform: translateX(5px);
+            border-left-color: var(--primary);
+        }
+
+        .feature i {
+            font-size: 2rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .feature h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .feature p {
+            color: var(--text-muted);
+        }
+
+        /* HOW TO JOIN (STEPS) */
+        .steps-section {
+            background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-main));
+        }
+
+        .steps-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto 50px auto;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-card);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 15px auto;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .step h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .step p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .join-cta-container {
+            text-align: center;
+        }
+
+        /* EMAIL CAPTURE SECTION */
+        .email-capture {
+            background: linear-gradient(135deg, rgba(18, 18, 23, 0.9), rgba(123, 44, 191, 0.2)), url('https://images.unsplash.com/photo-1542382257-8024cb638638?q=80&w=2000&auto=format&fit=crop') center/cover fixed;
+            text-align: center;
+            padding: 80px 5%;
+            border-top: 2px solid var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .email-content {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(9, 9, 11, 0.8);
+            padding: 40px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+        }
+
+        .email-content h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        .email-content p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .email-form {
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+        }
+
+        @media (min-width: 500px) {
+            .email-form {
+                flex-direction: row;
+            }
+        }
+
+        .email-form input {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--bg-main);
+            color: var(--text-light);
+            border-radius: 4px;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .email-form input:focus {
+            border-color: var(--primary);
+        }
+
+        /* FINAL CTA */
+        .final-cta {
+            text-align: center;
+            background-color: var(--bg-main);
+            padding: 120px 5%;
+        }
+
+        .final-cta h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .final-cta p {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .urgency {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .urgency i {
+            color: #ef4444; /* Red for urgency */
+            margin-right: 5px;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 60px 5% 20px 5%;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 20px;
+        }
+
+        /* ANIMATIONS */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero-buttons { flex-direction: column; }
+            .nav-links { display: none; }
+            section { padding: 60px 5%; }
+            .final-cta h2 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-crown"></i> PRESTIGE RP
+        </div>
+        <nav class="nav-links">
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="#join">How to Join</a>
+        </nav>
+        <a href="https://guildbase.gg/apply/prestige-roleplay/whitelist-application-WI1NAK" target="_blank" class="btn btn-primary">Apply Now</a>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content fade-in">
+            <h1>Where Your Story Writes The City</h1>
+            <p>Immersive, realistic, and strictly 16+. Join the premier UK/EU roleplay community where your choices actually matter. Say goodbye to chaos and experience the pinnacle of serious roleplay.</p>
+            <div class="hero-buttons">
+                <a href="https://guildbase.gg/apply/prestige-roleplay/whitelist-application-WI1NAK" target="_blank" class="btn btn-primary"><i class="fa-solid fa-file-signature"></i> Start Application</a>
+                
+                <!-- UPDATED DISCORD LINK HERE -->
+                <a href="https://discord.gg/8W58uXE8" target="_blank" class="btn btn-secondary"><i class="fa-brands fa-discord"></i> Join Discord</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST SECTION -->
+    <section id="about" class="trust-section">
+        <div class="section-header fade-in">
+            <h2>Why Prestige Roleplay?</h2>
+            <p>Built by roleplayers, for roleplayers. We maintain the highest standards.</p>
+        </div>
+        <div class="trust-grid fade-in">
+            <div class="trust-card">
+                <i class="fa-solid fa-user-shield"></i>
+                <h3>Active Staff Team</h3>
+                <p>24/7 moderation ensuring ruleplay is enforced and your RP goes uninterrupted.</p>
+            </div>
+            <div class="trust-card">
+                <i class="fa-solid fa-earth-europe"></i>
+                <h3>UK/EU Optimized</h3>
+                <p>Perfect latency for European players. A schedule that fits your real life.</p>
+            </div>
+            <div class="trust-card">
+                <i class="fa-solid fa-masks-theater"></i>
+                <h3>Strictly Serious RP</h3>
+                <p>A rigorous 16+ whitelist ensures maturity, deep storylines, and realism.</p>
+            </div>
+            <div class="trust-card">
+                <i class="fa-solid fa-server"></i>
+                <h3>Performance First</h3>
+                <p>Highly optimized scripts ensure high FPS and zero desync during crucial moments.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section id="features">
+        <div class="section-header fade-in">
+            <h2>Experience True Immersion</h2>
+            <p>A city designed to give you limitless possibilities.</p>
+        </div>
+        <div class="features-grid fade-in">
+            <div class="feature">
+                <i class="fa-solid fa-building"></i>
+                <h3>Player-Owned Businesses</h3>
+                <p>Run restaurants, mechanics, nightclubs, and more. Control the market and build your corporate empire.</p>
+            </div>
+            <div class="feature">
+                <i class="fa-solid fa-handcuffs"></i>
+                <h3>Advanced LEO & EMS</h3>
+                <p>Custom MDT, evidence scripts, triage systems, and realistic protocols for emergency services.</p>
+            </div>
+            <div class="feature">
+                <i class="fa-solid fa-sack-dollar"></i>
+                <h3>Realistic Economy</h3>
+                <p>No overnight millionaires. Earn your wealth through hard work, smart investments, or the criminal underworld.</p>
+            </div>
+            <div class="feature">
+                <i class="fa-solid fa-car-side"></i>
+                <h3>Custom Assets</h3>
+                <p>Hundreds of lore-friendly and custom vehicles, customized clothing, and unique MLOs across the city.</p>
+            </div>
+            <div class="feature">
+                <i class="fa-solid fa-user-ninja"></i>
+                <h3>In-Depth Criminal World</h3>
+                <p>Heists, turf wars, custom drug manufacturing, and black markets hidden deep within the city.</p>
+            </div>
+            <div class="feature">
+                <i class="fa-solid fa-briefcase"></i>
+                <h3>Civilian Careers</h3>
+                <p>Don't want to be a cop or robber? Be a lawyer, reporter, real estate agent, or pilot. Your choice.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- EMAIL CAPTURE SECTION -->
+    <section class="email-capture">
+        <div class="email-content fade-in">
+            <h2>Get Whitelisted Faster</h2>
+            <p>Join our priority list. Get immediate alerts on application queue times, server updates, and exclusive community events.</p>
+            <form id="whitelistForm" class="email-form">
+                <input type="email" placeholder="Enter your best email address..." required>
+                <button type="submit" class="btn btn-primary">Apply Now</button>
+            </form>
+            <p style="font-size: 0.8rem; margin-top: 15px; margin-bottom: 0;">*Submitting will redirect you securely to our Guildbase application portal.</p>
+        </div>
+    </section>
+
+    <!-- HOW TO JOIN -->
+    <section id="join" class="steps-section">
+        <div class="section-header fade-in">
+            <h2>Your Path to the City</h2>
+            <p>We've made joining as frictionless as possible.</p>
+        </div>
+        <div class="steps-container fade-in">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h4>Join Discord</h4>
+                <p>Connect with the community.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h4>Read Rules</h4>
+                <p>Understand our serious RP standards.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h4>Apply</h4>
+                <p>Submit your character's backstory.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h4>Welcome In</h4>
+                <p>Get approved and fly in.</p>
+            </div>
+        </div>
+        <div class="join-cta-container fade-in">
+            <a href="https://guildbase.gg/apply/prestige-roleplay/whitelist-application-WI1NAK" target="_blank" class="btn btn-primary">Start Your Application</a>
+            
+            <!-- UPDATED DISCORD LINK HERE -->
+            <a href="https://discord.gg/8W58uXE8" target="_blank" class="btn btn-secondary" style="margin-left: 15px;"><i class="fa-brands fa-discord"></i> Join Discord</a>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+        <div class="fade-in">
+            <h2>Ready to Start Your Story?</h2>
+            <p>The city awaits your arrival.</p>
+            <div class="hero-buttons">
+                <a href="https://guildbase.gg/apply/prestige-roleplay/whitelist-application-WI1NAK" target="_blank" class="btn btn-primary" style="font-size: 1.2rem; padding: 18px 40px;">Apply For Whitelist Now</a>
+            </div>
+            <div class="urgency">
+                <i class="fa-solid fa-fire"></i> Limited Whitelist Slots Available — Applications Reviewed Daily
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="margin-bottom: 15px; font-size: 1.2rem;">
+                    <i class="fa-solid fa-crown"></i> PRESTIGE RP
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">The premier destination for 16+ serious roleplay in the UK and EU. Your story, your rules.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#features">Server Features</a></li>
+                    <li><a href="#join">How to Join</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Community</h4>
+                <ul>
+                    <!-- UPDATED DISCORD LINK HERE -->
+                    <li><a href="https://discord.gg/8W58uXE8" target="_blank">Discord Server</a></li>
+                    <li><a href="#">Server Rules</a></li>
+                    <li><a href="https://guildbase.gg/apply/prestige-roleplay/whitelist-application-WI1NAK" target="_blank">Whitelist Application</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Prestige Roleplay. All rights reserved. Not affiliated with Rockstar Games.
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // 1. Email Form Redirection Logic (CRITICAL FUNCTIONALITY)
+        document.getElementById('whitelistForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent standard form submission
+            
+            // Redirect user directly to the Whitelist Application Link
+            window.location.href = "https://guildbase.gg/apply/prestige-roleplay/whitelist-application-WI1NAK";
+        });
+
+        // 2. Scroll Animation Logic (Fade in elements as they scroll into view)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                    observer.unobserve(entry.target); // Stop observing once appeared
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
